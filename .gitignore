@@ -1,0 +1,12 @@
+# IntelliJ project files
+dagger-test/.idea
+dagger-test/*.iml
+
+# Package Files #
+dagger-test/*.jar
+
+dagger-test/.gradle/
+dagger-test/build/
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+dagger-test/!gradle-wrapper.jar
