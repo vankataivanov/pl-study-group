@@ -1,4 +1,4 @@
-package kvhadzhiev.ioc.spring.db;
+package kvhadzhiev.ioc.spring.annotation.db;
 
 public interface Repository {
 

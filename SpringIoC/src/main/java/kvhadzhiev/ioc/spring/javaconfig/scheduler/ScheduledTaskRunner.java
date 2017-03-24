@@ -1,7 +1,7 @@
-package kvhadzhiev.ioc.spring.scheduler;
+package kvhadzhiev.ioc.spring.javaconfig.scheduler;
 
-import kvhadzhiev.ioc.spring.util.ActionLogger;
-import kvhadzhiev.ioc.spring.util.Autocalled;
+import kvhadzhiev.ioc.spring.javaconfig.util.ActionLogger;
+import kvhadzhiev.ioc.spring.javaconfig.util.Autocalled;
 
 public class ScheduledTaskRunner {
 

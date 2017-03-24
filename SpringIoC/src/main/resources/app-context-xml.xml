@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                            http://www.springframework.org/schema/beans/spring-beans.xsd" >
+
+    <!-- Bean definitions for XML configured container. -->
+
+    <!-- name attribute can specify multiple aliases, while id attribute is unique name -->
+    <!-- factory-method attribute causes the container to call that static method, instead of instantiating the class
+     through its constructor-->
+    <bean id="insertPaymentTask" name="alias1, alias2" class="kvhadzhiev.ioc.spring.xml.db.InsertPayment"
+    factory-method="createInstance"/>
+
+    <!-- this bean is used to instantiate the doPaymentsInsertionInvoker bean using instance factory method -->
+    <bean id="taskInvokerFactory" class="kvhadzhiev.ioc.spring.xml.scheduler.TaskInvokerFactory"/>
+
+    <!-- depends-on attribute enforces the order of injection -->
+    <!-- autowiring byType(byName won't work) -->
+    <bean id="doPaymentsInsertionInvoker" factory-bean="taskInvokerFactory" factory-method="createTaskInvoker"
+    depends-on="insertPaymentTask" autowire="byType">
+        <!-- the setter method should be called setTargetRepo -->
+        <!--<property name="targetRepo" ref="insertPaymentTask" />-->
+    </bean>
+
+    <bean id="insertPaymentScheduledTask" class="kvhadzhiev.ioc.spring.xml.scheduler.ScheduledTaskRunner">
+        <!-- Inject value type(integer in this case) -->
+        <property name="period" value="1000"/>
+        <property name="invoker" ref="doPaymentsInsertionInvoker"/>
+        <property name="logger" ref="actionsLogger"/>
+        <!-- use this for circular dependency with actionsLogger bean -->
+        <!-- you can specify the type, if there is ambiguity -->
+        <!-- <constructor-arg type="kvhadzhiev.ioc.spring.xml.util.ActionLogger" ref="actionsLogger"/> -->
+    </bean>
+
+    <bean id="actionsLogger" class="kvhadzhiev.ioc.spring.xml.util.ActionLogger">
+        <constructor-arg>
+            <!-- Inject a java.util.List of objects from the same type(List<ScheduledTaskRunner>) -->
+            <list>
+                <ref bean="insertPaymentScheduledTask"/>
+            </list>
+        </constructor-arg>
+    </bean>
+
+</beans>

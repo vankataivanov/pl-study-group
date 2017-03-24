@@ -1,7 +1,7 @@
-package kvhadzhiev.ioc.spring.scheduler;
+package kvhadzhiev.ioc.spring.annotation.scheduler;
 
-import kvhadzhiev.ioc.spring.db.Repository;
-import kvhadzhiev.ioc.spring.util.Autocalled;
+import kvhadzhiev.ioc.spring.annotation.db.Repository;
+import kvhadzhiev.ioc.spring.annotation.util.Autocalled;
 
 public class TaskInvoker {
 

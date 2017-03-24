@@ -1,6 +1,6 @@
-package kvhadzhiev.ioc.spring.util;
+package kvhadzhiev.ioc.spring.annotation.util;
 
-import kvhadzhiev.ioc.spring.scheduler.ScheduledTaskRunner;
+import kvhadzhiev.ioc.spring.annotation.scheduler.ScheduledTaskRunner;
 
 import java.util.List;
 
