@@ -1,7 +1,6 @@
 package kvhadzhiev.ioc.spring.xml.scheduler;
 
 import kvhadzhiev.ioc.spring.xml.util.ActionLogger;
-import kvhadzhiev.ioc.spring.xml.util.Autocalled;
 
 public class ScheduledTaskRunner {
 
@@ -21,17 +20,14 @@ public class ScheduledTaskRunner {
         this.logger = logger;
     }
 
-    @Autocalled
     public void setPeriod(int period) {
         this.period = period;
     }
 
-    @Autocalled
     public void setInvoker(TaskInvoker invoker) {
         this.invoker = invoker;
     }
 
-    @Autocalled
     public void setLogger(ActionLogger logger) {
         this.logger = logger;
     }

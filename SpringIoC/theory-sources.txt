@@ -1,0 +1,10 @@
+SOLID OOP principles - https://en.wikipedia.org/wiki/SOLID_(object-oriented_design) and sublinks
+IoC Methods(Service Locator/Callbacks/Strategy, etc.) - https://en.wikipedia.org/wiki/Inversion_of_control#Implementation_techniques
+EJB Model & Lightweight Containers - Beginning Spring(Wrox publishing, authors Mert Caliskan and Kenan Sevindik)
+Dependency Injection with IoC Container(Injector):
+- Beginning Spring(Wrox publishing, authors Mert Caliskan and Kenan Sevindik)
+- https://en.wikipedia.org/wiki/Dependency_injection
+- stack exchange top questions
+Spring Core Container:
+- http://docs.spring.io/spring/docs/current/spring-framework-reference/html/
+- stack exchange top questions

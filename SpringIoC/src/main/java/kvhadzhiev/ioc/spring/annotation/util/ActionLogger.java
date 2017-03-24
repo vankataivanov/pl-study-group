@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
+// start second logger(use prototype scope for logger)
 public class ActionLogger {
 
 

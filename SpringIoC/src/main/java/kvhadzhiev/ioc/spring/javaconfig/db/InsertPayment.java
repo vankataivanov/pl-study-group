@@ -1,6 +1,5 @@
 package kvhadzhiev.ioc.spring.javaconfig.db;
 
-import kvhadzhiev.ioc.spring.javaconfig.util.Autocalled;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -16,7 +15,6 @@ public class InsertPayment implements Repository {
         System.out.println("Inserting payment in database.");
     }
 
-    @Autocalled
     public void initHook() {
         System.out.println("InsertPayment bean init callback.");
     }
