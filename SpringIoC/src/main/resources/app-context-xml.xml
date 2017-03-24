@@ -9,8 +9,9 @@
     <!-- name attribute can specify multiple aliases, while id attribute is unique name -->
     <!-- factory-method attribute causes the container to call that static method, instead of instantiating the class
      through its constructor-->
+    <!-- init-method attribute to register initialization callback -->
     <bean id="insertPaymentTask" name="alias1, alias2" class="kvhadzhiev.ioc.spring.xml.db.InsertPayment"
-    factory-method="createInstance"/>
+    factory-method="createInstance" init-method="initHook"/>
 
     <!-- this bean is used to instantiate the doPaymentsInsertionInvoker bean using instance factory method -->
     <bean id="taskInvokerFactory" class="kvhadzhiev.ioc.spring.xml.scheduler.TaskInvokerFactory"/>
@@ -33,13 +34,19 @@
         <!-- <constructor-arg type="kvhadzhiev.ioc.spring.xml.util.ActionLogger" ref="actionsLogger"/> -->
     </bean>
 
-    <bean id="actionsLogger" class="kvhadzhiev.ioc.spring.xml.util.ActionLogger">
+    <!-- prototype scope(instead of the default singleton) creates new instance for each referred actionsLogger bean -->
+    <bean id="actionsLogger" scope="prototype" class="kvhadzhiev.ioc.spring.xml.util.ActionLogger">
         <constructor-arg>
             <!-- Inject a java.util.List of objects from the same type(List<ScheduledTaskRunner>) -->
             <list>
                 <ref bean="insertPaymentScheduledTask"/>
             </list>
         </constructor-arg>
+    </bean>
+
+    <!-- second instance of prototype bean fileLogger is injected -->
+    <bean id="fileLogger" class="kvhadzhiev.ioc.spring.xml.util.FileLogger">
+        <property name="logger" ref="actionsLogger"/>
     </bean>
 
 </beans>

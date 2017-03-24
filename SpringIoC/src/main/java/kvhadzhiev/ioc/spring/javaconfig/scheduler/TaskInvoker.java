@@ -1,13 +1,13 @@
 package kvhadzhiev.ioc.spring.javaconfig.scheduler;
 
 import kvhadzhiev.ioc.spring.javaconfig.db.Repository;
-import kvhadzhiev.ioc.spring.javaconfig.util.Autocalled;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class TaskInvoker {
 
     private Repository targetRepo;
 
-    @Autocalled
+    @Autowired
     public void setTargetRepo(Repository repo) {
         this.targetRepo = repo;
     }

@@ -14,4 +14,9 @@ public class InsertPayment implements Repository {
         return new InsertPayment();
     }
 
+    @Autocalled
+    public void initHook() {
+        System.out.println("InsertPayment bean init callback.");
+    }
+
 }

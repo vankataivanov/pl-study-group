@@ -1,33 +1,31 @@
 package kvhadzhiev.ioc.spring.annotation.scheduler;
 
 import kvhadzhiev.ioc.spring.annotation.util.ActionLogger;
-import kvhadzhiev.ioc.spring.annotation.util.Autocalled;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+
+@Component
 public class ScheduledTaskRunner {
 
-    private int period;
-    private TaskInvoker invoker;
+    @Value("1000")
+    public int period;
+
+    @Autowired
+    public TaskInvoker invoker;
+
     private ActionLogger logger;
 
     public int runCounter = 0;
 
-    public ScheduledTaskRunner(ActionLogger logger) {
-        this.logger = logger;
-    }
-
-    @Autocalled
-    public void setPeriod(int period) {
-        this.period = period;
-    }
-
-    @Autocalled
-    public void setInvoker(TaskInvoker invoker) {
-        this.invoker = invoker;
-    }
-
-    @Autocalled
+    @Autowired
     public void setLogger(ActionLogger logger) {
         this.logger = logger;
+        ArrayList<ScheduledTaskRunner> list = new ArrayList<>();
+        list.add(this);
+        logger.setTaskRunnerList(list);
     }
 
     public ActionLogger getLogger() {
