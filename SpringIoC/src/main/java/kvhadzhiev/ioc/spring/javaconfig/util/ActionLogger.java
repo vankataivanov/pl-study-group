@@ -1,29 +1,19 @@
 package kvhadzhiev.ioc.spring.javaconfig.util;
 
 import kvhadzhiev.ioc.spring.javaconfig.scheduler.ScheduledTaskRunner;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-@Configuration
 public class ActionLogger {
 
+    @Autowired
     List<ScheduledTaskRunner> taskRunnerList;
 
     public static int id = 0;
 
     public ActionLogger() {
 
-    }
-
-    @Bean
-    public ActionLogger actionLogger() {
-        return new ActionLogger();
-    }
-
-    public ActionLogger(List<ScheduledTaskRunner> taskRunnerList) {
-        this.taskRunnerList = taskRunnerList;
     }
 
     public void init() {
